@@ -1,0 +1,228 @@
+/* ================================================================
+   Kagi Custom Theme — Light & Dark compatible
+   Font: Seravek | Google-style links
+   ================================================================ */
+
+/* ----------------------------------------------------------------
+   § 1  CSS Custom Properties
+        :root = light defaults (covers .theme_light and all light themes)
+        Dark theme classes override for dark mode
+   ---------------------------------------------------------------- */
+
+:root {
+  --ct-text:           #202124;
+  --ct-url:            #5f6368;
+  --ct-footer:         #70757a;
+  --ct-link:           #1558d6;
+  --ct-link-visited:   #681da8;
+  --ct-input-bg:       #f1f3f4;
+  --ct-btn-bg:         #f1f3f4;
+  --ct-btn-color:      #3c4043;
+  --ct-header-border:  #e8eaed;
+  --ct-header-nav:     #5f6368;
+  --ct-suggestions-bg: #ffffff;
+}
+
+/* Explicit dark themes (.theme_moon_dark + .theme_dark for broader compat) */
+.theme_moon_dark,
+.theme_dark {
+  --m_sri_gap_color:   #202124 !important;
+  --background-color:  #202124 !important;
+  --ct-text:           #ffffff;
+  --ct-url:            #dddddd;
+  --ct-footer:         rgb(154, 160, 166);
+  --ct-link:           #8BB4F7;
+  --ct-link-visited:   #c58af9;
+  --ct-input-bg:       rgb(47, 49, 52);
+  --ct-btn-bg:         rgb(48, 49, 52);
+  --ct-btn-color:      rgb(232, 234, 237);
+  --ct-header-border:  rgb(60, 64, 67);
+  --ct-header-nav:     rgb(189, 193, 198);
+  --ct-suggestions-bg: rgb(48, 49, 52);
+}
+
+/* "System Default" — conditional dark (triggered by OS dark preference) */
+@media (prefers-color-scheme: dark) {
+  .theme_dark_conditional,
+  .theme_moon_dark_conditional {
+    --m_sri_gap_color:   #202124 !important;
+    --background-color:  #202124 !important;
+    --ct-text:           #ffffff;
+    --ct-url:            #dddddd;
+    --ct-footer:         rgb(154, 160, 166);
+    --ct-link:           #8BB4F7;
+    --ct-link-visited:   #c58af9;
+    --ct-input-bg:       rgb(47, 49, 52);
+    --ct-btn-bg:         rgb(48, 49, 52);
+    --ct-btn-color:      rgb(232, 234, 237);
+    --ct-header-border:  rgb(60, 64, 67);
+    --ct-header-nav:     rgb(189, 193, 198);
+    --ct-suggestions-bg: rgb(48, 49, 52);
+  }
+}
+
+/* ----------------------------------------------------------------
+   § 2  Typography
+   ---------------------------------------------------------------- */
+
+body {
+  font-family: seravek, arial, sans-serif;
+  color: var(--ct-text);
+}
+
+h3 {
+  font-size: 20px !important;
+}
+
+.__sri-body {
+  font-size: 14px;
+  line-height: 1.58 !important;
+  color: var(--ct-text) !important;
+}
+
+.__sri-desc,
+.__sri-url-box,
+.path,
+span.host {
+  color: var(--ct-url) !important;
+  opacity: 1 !important;
+  font-size: 14px !important;
+  line-height: 22px !important;
+}
+
+.__sri-url-box {
+  margin-bottom: 2px !important;
+  margin-left: -1px !important;
+}
+
+.__sri_url_path_box {
+  padding-left: 2px !important;
+  font-size: 14px !important;
+}
+
+.__sri-title {
+  padding-left: 1px !important;
+}
+
+#quickPeekResults summary,
+.widget-simple .widgetItemTitle .__title-text {
+  font-size: inherit;
+}
+
+.footer {
+  color: var(--ct-footer);
+}
+
+/* ----------------------------------------------------------------
+   § 3  Links
+   ---------------------------------------------------------------- */
+
+a {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.__sri_title_link,
+.__srgi-title a {
+  border-bottom: none !important;
+  text-decoration: none !important;   /* ← removes the underline */
+  color: var(--ct-link);
+  font-weight: 500;
+}
+
+.__sri_title_link:hover,
+.__srgi-title a:hover {
+  color: var(--ct-link);
+  border-bottom-color: var(--ct-link);
+}
+
+.__sri_title_link:visited,
+.__srgi-title a:visited {
+  color: var(--ct-link-visited);
+}
+
+.__sri_title_link:visited:hover,
+.__srgi-title a:visited:hover {
+  color: var(--ct-link-visited);
+  border-bottom-color: var(--ct-link-visited);
+}
+
+/* ----------------------------------------------------------------
+   § 4  Favicon
+   ---------------------------------------------------------------- */
+
+.__domain-favicon {
+  height: 24px !important;
+  width: 24px !important;
+  border-radius: 50% !important;
+}
+
+/* ----------------------------------------------------------------
+   § 5  Header & Navigation
+   ---------------------------------------------------------------- */
+
+header,
+.app-header {
+  border-bottom-color: var(--ct-header-border) !important;
+}
+
+.app-header .search-form .spt {
+  background: transparent;
+}
+
+.app-header a,
+.serp-nav a {
+  color: var(--ct-header-nav) !important;
+}
+
+/* ----------------------------------------------------------------
+   § 6  Search Input & Suggestions
+   ---------------------------------------------------------------- */
+
+.search-input-container {
+  background-color: var(--ct-input-bg) !important;
+  font-weight: 500;
+  border: none;
+}
+
+.search-form .search_area {
+  background-color: var(--ct-input-bg) !important;
+}
+
+.auto_suggestions {
+  border: none;
+}
+
+.auto_suggestions .auto_suggestions_in {
+  width: 96%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.auto_suggestions .auto_suggestions_footer {
+  width: 96%;
+}
+
+.auto_suggestions,
+.auto_suggestions_in,
+.auto_suggestions_lenses,
+.autosugg-landing {
+  background-color: var(--ct-suggestions-bg) !important;
+}
+
+/* ----------------------------------------------------------------
+   § 7  Buttons
+   ---------------------------------------------------------------- */
+
+button.btn {
+  background-color: var(--ct-btn-bg) !important;
+  border: 0 !important;
+  color: var(--ct-btn-color) !important;
+  font-family: seravek, roboto, arial, sans-serif;
+}
+
+.btn {
+  border: 0 !important;
+}
